@@ -28,8 +28,16 @@ lspconfig.volar.setup {
 }
 
 lspconfig.arduino_language_server.setup {
-  root_dir = util.root_pattern("sketch.yaml"),
-  filetypes = { 'arduino' }
+  
+    cmd = {
+        "arduino-language-server",
+        "-cli-config", "~/.arduino15/arduino-cli.yaml",
+        "-fqbn", "arduino:avr:uno",  -- Replace with your board's FQBN
+        "-cli", "arduino-cli",
+        "-clangd", "clangd"
+    },
+    filetypes = { "arduino" },
+    root_dir = require('lspconfig').util.root_pattern(".arduino", "*.ino")
 }
 
 lspconfig.nim_langserver.setup {

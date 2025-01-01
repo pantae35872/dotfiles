@@ -44,6 +44,10 @@ local plugins = {
       ft = { "markdown" },
   },
   {
+    "github/copilot.vim",
+    lazy = false,
+  },
+  {
     "alaviss/nim.nvim",
     ft = "nim"
   },

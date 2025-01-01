@@ -9,6 +9,8 @@ map('n', '<A-.>', '<Cmd>bn<CR>', opts)
 -- :BarbarDisable - very bad command, should never be used
 
 map('t', '<Esc>', '<C-\\><C-n>', {noremap =true})
+map('i', '<A-j>', 'copilot#Accept()', {noremap = true, silent = true, expr = true})
+vim.g.copilot_no_tab_map = true
 
 -- vim.keymap.set('n', '<leader>c', require('osc52').copy_operator, {expr = true})
 -- vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})

@@ -13,6 +13,10 @@ local plugins = {
       return require "custom.configs.null-ls"
     end
   },
+  { 
+    "lambdalisue/suda.vim", 
+    lazy = false, 
+  },
   {
     "glebzlat/arduino-nvim",
     config = {

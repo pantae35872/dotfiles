@@ -7,6 +7,10 @@ local lsp = {
       local capabilities = require("config.lsp").capabilities
       local util = require("lspconfig/util")
 
+      vim.lsp.config("rust-analyzer", {
+        on_attach = on_attach,
+      });
+
       lspconfig.volar.setup({
         on_attach = on_attach,
         capabilities = capabilities,

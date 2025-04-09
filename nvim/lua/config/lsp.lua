@@ -7,7 +7,10 @@ M.on_attach = function(client, bufnr)
   local opts = { buffer = bufnr, noremap = true, silent = true }
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+  vim.keymap.set("n", "<leader>e", function()
+    vim.diagnostic.open_float(nil, { focusable = false })
+  end, opts)
+  vim.keymap.set("n", "<leader>ra", vim.lsp.buf.rename, opts)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 end
 
@@ -23,8 +26,10 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete(),
   },
   sources = {
+    { name = "copilot" },
     { name = "nvim_lsp" },
     { name = "buffer" },
+    { name = "path" },
   },
   completion = { completeopt = "menu,menuone,noinsert" },
 })

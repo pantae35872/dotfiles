@@ -8,6 +8,11 @@ local plugins = {
     init = mappings.telescope
   },
   {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lsp/plenary.nvim" },
+    opts = {}
+  },
+  {
     "lambdalisue/suda.vim",
     lazy = false,
   },
@@ -17,6 +22,11 @@ local plugins = {
       function() require("arduino-nvim").setup() end,
       filetype = "arduino",
     },
+  },
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true,
   },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -54,8 +64,14 @@ local plugins = {
     ft = { "markdown" },
   },
   {
-    "github/copilot.vim",
-    lazy = false,
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    opts = {},
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    opts = {},
   },
   {
     "alaviss/nim.nvim",
@@ -110,14 +126,14 @@ local plugins = {
       filters = {
         dotfiles = false,
       },
+      git = {
+        enable = true,
+        ignore = false,
+        timeout = 500,
+      },
       on_attach = mappings.nvim_tree_buffer
     },
     init = mappings.nvim_tree
-  },
-  {
-    'mrcjkb/rustaceanvim',
-    version = '^5', -- Recommended
-    lazy = false,   -- This plugin is already lazy
   },
   {
     "mfussenegger/nvim-dap"
@@ -145,6 +161,11 @@ local plugins = {
         desc = "Buffer Local Keymaps (which-key)",
       },
     }
+  },
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^5', -- Recommended
+    lazy = false,   -- This plugin is already lazy
   },
   {
     'nvim-lualine/lualine.nvim',

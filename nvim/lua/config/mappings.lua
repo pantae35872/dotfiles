@@ -6,17 +6,20 @@ M.default = function()
   vim.keymap.set('n', '<A-,>', '<Cmd>bp<CR>', { noremap = true, silent = true })
   vim.keymap.set('n', '<A-.>', '<Cmd>bn<CR>', { noremap = true, silent = true })
   vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
-  vim.keymap.set('i', '<A-j>', 'copilot#Accept()', { noremap = true, silent = true, expr = true })
+  vim.keymap.set('i', '<A-f>', 'copilot#Accept("")', { noremap = true, silent = true, expr = true })
+  vim.keymap.set('n', '<leader>h', '<CMD>noh<CR>', { noremap = true, silent = true });
   vim.g.copilot_no_tab_map = true
 end
 
 M.telescope = function()
   local builtin = require('telescope.builtin')
+  local todo_comments = require("telescope").extensions["todo-comments"]
 
   vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
   vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
   vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
   vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+  vim.keymap.set('n', '<leader>ft', todo_comments.todo, { desc = 'Todo comments' })
 end
 
 M.nvim_tree = function()
